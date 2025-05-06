@@ -233,11 +233,97 @@
 // }
 
 // export default Home;
+// import { motion } from "framer-motion";
+// import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer";
+
+// // Example of importing images from 'src/assets/images'
+// import positiveImage from '../assets/images/positive2.webp';
+// import image1 from '../assets/images/image1.jpeg';
+// import image5 from '../assets/images/image5.png';
+// import image6 from '../assets/images/image6.jpeg';
+// import image3 from '../assets/images/image3.jpeg';
+
+// function Home() {
+//     return (
+//         <div className="h-screen w-full">
+//             {/* Navbar */}
+//             <Navbar />
+
+//             {/* Hero Section */}
+//             <div 
+//                 className="absolute top-0 left-0 h-screen w-screen bg-cover bg-center z-0 mt-30"
+//                 style={{ backgroundImage: `url(${positiveImage})` }}
+//             >
+//                 {/* Animated Heading - Coming from Left */}
+//                 <motion.h1  
+//                     initial={{ y: "-30", opacity: 0 }} 
+//                     animate={{ y: 65, opacity: 1 }} 
+//                     transition={{ duration: 0.8 }}
+//                     className="text-5xl font-bold text-black italic z-10 ml-20"
+//                 >
+//                     <u>Explore Us</u>
+//                 </motion.h1>
+
+//                 {/* Animated Paragraph - Coming from Right */}
+//                 <motion.p 
+//                     initial={{ y: -20, x: 0 }} 
+//                     animate={{ 
+//                         y: 200, 
+//                         x: window.innerWidth >= 1024 ? -30 : window.innerWidth >= 768 ? -5 : -10  
+//                     }} 
+//                     transition={{ duration: 0.8 }}
+//                     className="text-4xl text-black italic mt-4 text-center md:text-left px-6 
+//                                max-w-[90%] md:max-w-[60%] ml-0 md:ml-6 lg:ml-12"
+//                 >
+//                     Welcome to Herselfcare, your online <br />
+//                     guide to breast cancer prediction <br />
+//                     and prevention. Take control of <br />
+//                     your health with our innovative <br />
+//                     risk assessment tool.
+//                 </motion.p>
+//             </div>
+
+//             {/* Image Section with Motion */}
+//             <div className="relative w-full flex flex-col items-center py-10 bg-cover bg-top bg-no-repeat"
+//                 style={{ backgroundImage: `url(${positiveImage})`, filter: "contrast(1.2) brightness(1.1)", height: "900px" }}>
+//                 <h2 className="text-4xl font-bold mb-8 italic">Our Visual Message</h2>
+
+//                 {/* Scrolling container */}
+//                 <motion.div
+//                     className="flex gap-10 w-max px-4"
+//                     animate={{ x: ["-100%", "100%"] }}
+//                     transition={{
+//                         duration: 30, // Slower scroll speed
+//                         repeat: Infinity,
+//                         repeatType: "loop",
+//                         ease: "linear"
+//                     }}
+//                 >
+//                     {/* First set of images */}
+//                     {[image1, image5, image6, image3].map((img, index) => (
+//                         <img
+//                             key={index}
+//                             src={img}
+//                             alt={`Health Awareness ${index}`}
+//                             className="w-[300px] h-[300px] object-cover rounded-2xl shadow-xl flex-shrink-0"
+//                         />
+//                     ))}
+//                 </motion.div>
+//             </div>
+
+//             {/* Footer */}
+//             <Footer />
+//         </div>
+//     );
+// }
+
+// export default Home;
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-// Example of importing images from 'src/assets/images'
+// Importing images
 import positiveImage from '../assets/images/positive2.webp';
 import image1 from '../assets/images/image1.jpeg';
 import image5 from '../assets/images/image5.png';
