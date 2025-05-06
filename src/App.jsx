@@ -125,12 +125,11 @@ import DrAi from "./components/drai";
 import "./index.css";
 import "./App.css";
 import './i18n'; // This initializes your language setup
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.jsx";  
-// import SignUp from "./pages/SignUp.jsx";
-// import SignIn from "./pages/SignIn.jsx";
+
+// import SignIn from "./pages/SignIn.jsx";// import SignUp from "./pages/SignUp.jsx"
 import Dashboard from "./pages/Dashboard.jsx"; 
 import Predict from "./components/Predict";
 import ProtectedRoute from "./ProtectedRoute.jsx";
@@ -138,9 +137,9 @@ import HospitalSearch from "./components/HospitalSearch";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Learning from "./pages/Learning";
-import Todo from "./pages/todo.jsx";
+import Todo from "./pages/Todo.jsx";
 import { FaTasks } from "react-icons/fa";
-import { useTranslation } from 'react-i18next'; // Import useTranslation for language switching
+ // Import useTranslation for language switching
 
 function App() {
   const { t, i18n } = useTranslation();  // ✅ Use it once and destructure both t and i18n
