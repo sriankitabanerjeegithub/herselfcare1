@@ -571,6 +571,9 @@ function Navbar() {
                         >
                             Home
                         </Link>
+                        <Link to="/Todo" className="text-black text-lg font-semibold hover:text-pink-500 transition">
+                            todo list
+                        </Link>
                         <Link to="/about" className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
                             About Us
                         </Link>
@@ -623,6 +626,7 @@ function Navbar() {
                 {/* Mobile Menu Dropdown */}
                 {isOpen && (
                     <div className="md:hidden bg-white shadow-lg flex flex-col items-center gap-4 py-4">
+                         
                         <Link to="/" className="text-black text-lg font-semibold hover:text-pink-500 transition">
                             Home
                         </Link>
