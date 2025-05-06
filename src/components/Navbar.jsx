@@ -545,7 +545,7 @@ function Navbar() {
             <div className="w-full bg-black py-1 flex items-center justify-between px-6 shadow-md">
                 <Link to="/">
                     <img 
-                        src="/logo3.jpeg" 
+                        src="../images/logo3.jpeg" 
                         alt="Logo3" 
                         className="h-16 w-auto transition-transform duration-500 ease-in-out transform hover:translate-x-[-5px]" 
                     />

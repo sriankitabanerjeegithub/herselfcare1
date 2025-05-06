@@ -78,7 +78,7 @@ function Home() {
 {/* Image Section with Left-to-Right Motion */}
 {/* Image Section with Continuous Left-to-Right Motion */}
 <div className="relative w-full flex flex-col items-center py-10 bg-cover bg-top bg-no-repeat"
-  style={{ backgroundImage: "url('../images//positive.jpeg')", filter: "contrast(1.2) brightness(1.1)",height:"900px" }}>
+  style={{ backgroundImage: "url('../images/positive.jpeg')", filter: "contrast(1.2) brightness(1.1)",height:"900px" }}>
   
   <h2 className="text-4xl font-bold mb-8 italic">Our Visual Message</h2>
 
@@ -200,9 +200,9 @@ function Home() {
                     </p>
                     <div className="relative z-10 flex flex-wrap justify-center mt-2 gap-15 max-w-4xl">
                         {[ 
-                            { name: "Sarah Johnson", text: "I found this platform incredibly helpful and informative. The predictions gave me peace of mind.", image: "/girls.jpeg" },
-                            { name: "Climily Carter", text: "A fantastic tool for early detection and awareness. Highly recommended!", image: "/girls1.jpeg" },
-                            { name: "Michael Lee", text: "This website provided me with valuable insights and reassurance.", image: "/girls2.jpeg" },
+                            { name: "Sarah Johnson", text: "I found this platform incredibly helpful and informative. The predictions gave me peace of mind.", image: "../images/girls.jpeg" },
+                            { name: "Climily Carter", text: "A fantastic tool for early detection and awareness. Highly recommended!", image: "../images/girls1.jpeg" },
+                            { name: "Michael Lee", text: "This website provided me with valuable insights and reassurance.", image: "../images/girls2.jpeg" },
                         ].map((testimonial, index) => (
                             <motion.div 
                                 key={index} 
