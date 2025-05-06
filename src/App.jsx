@@ -124,7 +124,7 @@
 import DrAi from "./components/drai";
 import "./index.css";
 import "./App.css";
-import './i18n'; // This initializes your language setup
+ // This initializes your language setup
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.jsx";  
@@ -142,28 +142,13 @@ import { FaTasks } from "react-icons/fa";
  // Import useTranslation for language switching
 
 function App() {
-  const { t, i18n } = useTranslation();  // ✅ Use it once and destructure both t and i18n
+    // ✅ Use it once and destructure both t and i18n
 
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);  // Change language logic
-  };
+  
 
   return (
     <div>
-      {/* Language Dropdown and a test heading */}
-      {/* <div style={{ textAlign: 'center', padding: '2rem' }}>
-      <h1>{t('welcome')}</h1>
-
-      <select
-        onChange={(e) => i18n.changeLanguage(e.target.value)}
-        defaultValue="en"
-        style={{ padding: '0.5rem', fontSize: '1rem', marginTop: '1rem' }}
-      >
-        <option value="en">🇺🇸 English</option>
-        <option value="hi">🇮🇳 हिंदी</option>
-      </select>
-    </div> */}
-      {/* Router with Routes */}
+      
       
       <Router>
         <div className="app">
