@@ -268,7 +268,7 @@ function Learning() {
 
       <div
         className="min-h-screen bg-cover bg-top bg-no-repeat flex flex-col items-center justify-center px-4 py-16"
-        style={{ backgroundImage: "url('/learn.avif')" }}
+        style={{ backgroundImage: "url('../images//learn.avif')" }}
       >
         <h1 className="italic text-6xl font-bold text-black text-center mb-20 mt-30">
           <u>Take knowledge</u>, Stay aware
