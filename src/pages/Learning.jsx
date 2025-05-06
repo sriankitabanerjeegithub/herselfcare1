@@ -278,7 +278,7 @@ function Learning() {
           What is Breast Cancer?
         </p>
 
-        <div className=" text-center text-black max-w-4xl space-y-4 text-xl italic">
+        <div className="text-center text-black max-w-4xl space-y-4 text-xl italic">
           <p>
             Breast cancer is a type of cancer that occurs when abnormal cells in the breast grow and multiply uncontrollably, forming a tumor.
           </p>
@@ -335,7 +335,7 @@ function Learning() {
           </div>
         </div>
 
-        <h className="text-3xl font-bold mr-43 mt-15 italic">
+        <h className="text-3xl font-bold italic mr-43 mt-15">
           <li>
             <u>Triple-Negative Breast Cancer</u>
           </li>
@@ -384,7 +384,7 @@ function Learning() {
           <p className="mt-10 text-xl italic text-blue-700">Healthy Lifestyle</p>
           <p className="mt-6 text-3xl italic text-blue-600">Women's Health</p>
 
-          <p className="mt-10 text-3xl italic">Breast cancer prevention : How to reduce your risk</p>
+          <p className="mt-10 text-3xl italic">Breast cancer prevention: How to reduce your risk</p>
 
           <p className="mt-10 text-2xl italic text-blue-500">Breast cancer prevention starts with healthy habits — such as limiting alcohol and staying physically active. Learn what you can do to lower your breast cancer risk.</p>
           <p className="mt-10 text-3xl italic">What can I do to lower my risk of breast cancer?</p>
@@ -402,4 +402,10 @@ function Learning() {
           <p className="mt-10 text-2xl italic"><li><span className="font-bold">If you smoke, quit</span> Some research suggests that smoking tobacco raises the risk of breast cancer. Breathing in another person's cigarette smoke also may raise the risk. If you or a loved one needs help quitting, talk with a member of your health care team.</li></p>
         </div>
 
-        <div className="mt-
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+export default Learning;
