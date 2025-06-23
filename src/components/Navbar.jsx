@@ -510,163 +510,126 @@
 // export default Navbar;
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MapPin, Menu, X, Bot } from "lucide-react"; // Added Bot icon
-import { useTranslation } from 'react-i18next';
+import { MapPin, Menu, X, Bot } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const { loginWithRedirect, logout, isAuthenticated, isLoading, user } = useAuth0();
-    const navigate = useNavigate();
-    const { i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate();
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const handleLogin = () => loginWithRedirect({ appState: { returnTo: "/dashboard" } });
 
-    const handleLogin = () => {
-        loginWithRedirect({
-            appState: { returnTo: '/dashboard' }  // You can change this if needed
-        });
-    };
+  const handlePredictClick = () => {
+    if (isAuthenticated) navigate("/predict");
+    else loginWithRedirect();
+  };
 
-    // ✅ NEW: Predict button logic
-    const handlePredictClick = () => {
-        if (isAuthenticated) {
-            navigate('/predict');
-        } else {
-            loginWithRedirect();
-        }
-    };
+  return (
+    <div className="w-full fixed top-0 left-0 z-50">
+      {/* Upper Navbar */}
+      <div className="w-full bg-black py-1 flex items-center justify-between px-4 shadow-md">
+        <Link to="/">
+          <img
+            src="../images/logo3.jpeg"
+            alt="Logo3"
+            className="h-12 w-auto transition-transform duration-500 ease-in-out transform hover:translate-x-[-5px]"
+          />
+        </Link>
+        <Link
+          to="/hospitals"
+          className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition"
+        >
+          <MapPin size={18} />
+          Nearest Services
+        </Link>
+      </div>
 
-    return (
-        <div className="w-full fixed top-0 left-0 z-30">
-            {/* Upper Navbar (Logo & Nearest Services) */}
-            <div className="w-full bg-black py-1 flex items-center justify-between px-6 shadow-md">
-                <Link to="/">
-                    <img 
-                        src="../images/logo3.jpeg" 
-                        alt="Logo3" 
-                        className="h-16 w-auto transition-transform duration-500 ease-in-out transform hover:translate-x-[-5px]" 
-                    />
-                </Link>
+      {/* Main Navbar */}
+      <nav className="w-full bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+          {/* Links */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link to="/" className="text-black text-sm font-medium hover:text-pink-500 transition">
+              Home
+            </Link>
+            <Link to="/about" className="text-black text-sm font-medium hover:text-pink-500 transition">
+              About Us
+            </Link>
+            <Link to="/blog" className="text-black text-sm font-medium hover:text-pink-500 transition">
+              Blog
+            </Link>
+            <Link to="/learning" className="text-black text-sm font-medium hover:text-pink-500 transition">
+              Learning
+            </Link>
+            <Link to="/drai" className="flex items-center gap-1 text-black text-sm font-medium hover:text-pink-500 transition">
+              <Bot size={16} /> Ask AI
+            </Link>
+          </div>
 
-                <Link 
-                    to="/hospitals" 
-                    className="flex items-center gap-2 bg-white text-white px-4 py-2 rounded-full text-lg font-semibold hover:bg-gray-800 transition"
+          {/* Right Side Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={handlePredictClick}
+              className="text-black text-sm font-medium hover:text-pink-500 transition"
+            >
+              Predict
+            </button>
+            {!isAuthenticated ? (
+              <button onClick={handleLogin} className="text-black text-sm font-medium hover:text-pink-500 transition">
+                Login
+              </button>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="text-black text-xs">Welcome, {user?.name}</span>
+                <button
+                  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+                  className="text-black text-sm font-medium hover:text-pink-500 transition"
                 >
-                    <MapPin size={20} />
-                    Nearest Services 
-                </Link>
-            </div>
+                  Log Out
+                </button>
+              </div>
+            )}
+          </div>
 
-            {/* Main Navbar */}
-            <nav className="w-full bg-white shadow-md">
-                <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-                    {/* Left Side - Navigation Links */}
-                    <div className="flex items-center gap-6">
-                        <Link 
-                            to="/" 
-                            className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition"
-                        >
-                            Home
-                        </Link>
-                        <Link to="/Todo" className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                            todo list
-                        </Link>
-                        <Link to="/about" className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
-                            About Us
-                        </Link>
-                        <Link to="/blog" className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
-                            Blog
-                        </Link>
-                        <Link to="/learning" className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
-                            Learning
-                        </Link>
-                        {/* NEW: DrAi link */}
-                        <Link to="/drai" className="flex items-center gap-1 text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
-                            <Bot size={20} />
-                            Ask AI
-                        </Link>     
-                    </div>
-
-                    {/* Right Side - Auth Buttons */}
-                    <div className="hidden md:flex items-center gap-6">
-                        {/* ✅ Predict button with logic */}
-                        <button
-                            onClick={handlePredictClick}
-                            className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition"
-                        >
-                            Predict
-                        </button>
-
-                        {!isAuthenticated ? (
-                            <button onClick={handleLogin} className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition">
-                                Login
-                            </button>
-                        ) : (
-                            <div className="flex items-center gap-4">
-                                <span className="text-gray-700 text-sm">Welcome, {user?.name}</span>
-                                <button
-                                    onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-                                    className="text-gray-700 text-lg font-semibold hover:text-pink-500 transition"
-                                >
-                                    Log Out
-                                </button>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button className="md:hidden text-gray-700" onClick={toggleMenu}>
-                        {isOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
-                </div>
-
-                {/* Mobile Menu Dropdown */}
-                {isOpen && (
-                    <div className="md:hidden bg-white shadow-lg flex flex-col items-center gap-4 py-4">
-                         
-                        <Link to="/" className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                            Home
-                        </Link>
-                        <Link to="/about" className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                            About Us
-                        </Link>
-                        <Link to="/blog" className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                            Blog
-                        </Link>
-                        <Link to="/learning" className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                            Learning
-                        </Link>
-                        <Link to="/drai" className="flex items-center gap-1 text-black text-lg font-semibold hover:text-pink-500 transition">
-                            <Bot size={20} />
-                            Ask AI
-                        </Link>
-                        {/* ✅ Predict button for mobile */}
-                        <button
-                            onClick={handlePredictClick}
-                            className="text-black text-lg font-semibold hover:text-pink-500 transition"
-                        >
-                            Predict
-                        </button>
-                        {!isAuthenticated ? (
-                            <button onClick={handleLogin} className="text-black text-lg font-semibold hover:text-pink-500 transition">
-                                Login
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-                                className="text-black text-lg font-semibold hover:text-pink-500 transition"
-                            >
-                                Log Out
-                            </button>
-                        )}
-                    </div>
-                )}
-            </nav>
+          {/* Hamburger Icon */}
+          <button className="md:hidden text-black" onClick={toggleMenu} aria-label="Menu">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-    );
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="bg-white flex flex-col items-center gap-3 py-4 shadow-lg md:hidden">
+            <Link to="/" className="text-black text-base font-medium hover:text-pink-500 transition" onClick={toggleMenu}>Home</Link>
+            <Link to="/about" className="text-black text-base font-medium hover:text-pink-500 transition" onClick={toggleMenu}>About Us</Link>
+            <Link to="/blog" className="text-black text-base font-medium hover:text-pink-500 transition" onClick={toggleMenu}>Blog</Link>
+            <Link to="/learning" className="text-black text-base font-medium hover:text-pink-500 transition" onClick={toggleMenu}>Learning</Link>
+            <Link to="/drai" className="flex items-center gap-1 text-black text-base font-medium hover:text-pink-500 transition" onClick={toggleMenu}>
+              <Bot size={20} /> Ask AI
+            </Link>
+            <button onClick={() => { handlePredictClick(); toggleMenu(); }} className="text-black text-base font-medium hover:text-pink-500 transition">
+              Predict
+            </button>
+            {!isAuthenticated ? (
+              <button onClick={handleLogin} className="text-black text-base font-medium hover:text-pink-500 transition">
+                Login
+              </button>
+            ) : (
+              <button
+                onClick={() => { logout({ logoutParams: { returnTo: window.location.origin } }); toggleMenu(); }}
+                className="text-black text-base font-medium hover:text-pink-500 transition"
+              >
+                Log Out
+              </button>
+            )}
+          </div>
+        )}
+      </nav>
+    </div>
+  );
 }
 
 export default Navbar;
